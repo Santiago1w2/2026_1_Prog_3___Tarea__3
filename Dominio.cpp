@@ -243,35 +243,41 @@ int main() {
     center.registerCommand("heal", heal);
 
     center.registerCommand("move", [&entity](const list<string>& args) {
-    if (args.size() != 2) {
+        cout << "Move..." << endl;
+        cout << "---------------------------" << endl;
+        if (args.size() != 2) {
         cout << "move necesita 2 argumentos" << endl;
         return;
-    }
+        }
 
-    try {
+        try {
         list<string>::const_iterator it = args.begin();
         int x = stoi(*it++);
         int y = stoi(*it);
 
         entity.setPos_x(x);
         entity.setPos_y(y);
-    } catch (...) {
+        } catch (...) {
         cout << "Argumentos invalidos en move" << endl;
-    }
-    });
+        }
+        });
 
     center.registerCommand("status", [&entity](const list<string>& args) {
-    if (!args.empty()) {
+        cout << "---------------------------" << endl;
+        cout << "Register.... " << endl;
+        if (!args.empty()) {
         cout << "status no recibe argumentos" << endl;
         return;
-    }
+        }
 
-    cout << entity.status() << endl;
-    });
+        cout << entity.status() << endl;
+        });
 
     center.registerCommand("reset", [&entity](const list<string>& args) {
-    entity = Entity(); // reinicia todo
-    });
+        cout << "Delete.. " << endl;
+        cout << "---------------------------" << endl;
+        entity = Entity(); // reinicia todo
+        });
 
     //pruebas
     list<string> args1;
